@@ -1,5 +1,6 @@
 class DBCredetials:
     def __init__(self):
+        # PUT CREDENTIALS IN HERE
         self.dbname = 'your_db_name'
         self.user = 'your_username'
         self.password = 'your_password'
