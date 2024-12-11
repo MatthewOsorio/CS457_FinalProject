@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 17.2
--- Dumped by pg_dump version 17.2
+-- Dumped from database version 16.4
+-- Dumped by pg_dump version 17.0
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -162,6 +162,14 @@ ALTER TABLE ONLY public.authors
 
 
 --
+-- Name: authors authors_unique_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.authors
+    ADD CONSTRAINT authors_unique_key UNIQUE (id, f_name, l_name);
+
+
+--
 -- Name: images images_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -194,22 +202,6 @@ ALTER TABLE ONLY public.anime
 
 
 --
--- Name: authors unique_author_id; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.authors
-    ADD CONSTRAINT unique_author_id UNIQUE (id);
-
-
---
--- Name: images unique_img_id; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.images
-    ADD CONSTRAINT unique_img_id UNIQUE (id);
-
-
---
 -- Name: manga unique_manga_id; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -223,6 +215,14 @@ ALTER TABLE ONLY public.manga
 
 ALTER TABLE ONLY public.studios
     ADD CONSTRAINT unique_studio_id UNIQUE (id);
+
+
+--
+-- Name: images url_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.images
+    ADD CONSTRAINT url_key UNIQUE (url);
 
 
 --
@@ -274,11 +274,11 @@ ALTER TABLE ONLY public.anime
 
 
 --
--- Name: manga manga_author_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: manga fk_author_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.manga
-    ADD CONSTRAINT manga_author_id_fkey FOREIGN KEY (author_id) REFERENCES public.authors(id);
+    ADD CONSTRAINT fk_author_id FOREIGN KEY (author_id) REFERENCES public.authors(id);
 
 
 --
