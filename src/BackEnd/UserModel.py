@@ -1,14 +1,16 @@
 from psycopg import connect, errors
 from BackEnd.Classes.User import User
 from uuid import uuid4
+from BackEnd.Classes.DBCredentials import DBCredetials
 
 class UserModel:
     def __init__(self):
         self.user= None
-
+        self.db_connection = DBCredetials()
+        
     def getConncetion(self):
         try:
-            conn= connect("dbname= OtakuAI user=postgres password= password host=localhost port=5432")
+            conn= connect(f"dbname= {self.db_connection.getDBName()} user={self.db_connection.getUser()} password= {self.db_connection.getPassword()} host= {self.db_connection.getHost()} port= {self.db_connection.getPort()}")
             return conn
         
         except Exception as e:
