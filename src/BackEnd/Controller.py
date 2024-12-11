@@ -91,7 +91,7 @@ class Controller:
             messages= [{'role': 'system', 'content': '''You are an anime expert and have watched over thousands of anime. 
                                                         Your job is to recommend three anime based on the title, author, genre, and demographic of the manga being given to you.
                                                         Please make these recommendation in a friendly way but concise way and do not repeat anime being given to you.
-                                                        Please make the output in this format:1. recommendation \n 2. recommendation\n 3. recommendation'''},
+                                                        Please make the output in this format:1.recommendation\n 2. recommendation\n 3. recommendation'''},
                         {'role': 'user', 'content': str(gpt_input)}]
         )
         

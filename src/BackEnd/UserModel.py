@@ -87,7 +87,8 @@ class UserModel:
             raise("Error inserting the manga: ", e)
         finally:
             connection.close()
-            self.user.addManga(manga)
+            if status != 1:
+                self.user.addManga(manga)
             return status
         
     def insertAnimeToUser(self, anime):
@@ -117,6 +118,7 @@ class UserModel:
             raise("Error inserting the manga: ", e)
         finally:
             connection.close()
-            self.user.addAnime(anime)
+            if status != 1:
+                self.user.addAnime(anime)
             return status
             

@@ -133,7 +133,7 @@ class View():
                 case 2:
                     self.addFavAnimeMenu()
                 case 3:
-                    print("Returning to your favorites")
+                    print("Returning to your favorites\n")
                     finished = True
                 case _:
                     print("Invalid input")
@@ -173,8 +173,10 @@ class View():
 
     def recommendMangaMenu(self):
         recommendations= self.controller.recommendManga()
+        print("\nHere are your manga recommendations: ")
         print('\n', recommendations, '\n')
 
     def recommendAnimeMenu(self):
         recommendations= self.controller.recommendAnime()
+        print("\nHere are your anime recommendations: ")
         print('\n', recommendations, '\n')
